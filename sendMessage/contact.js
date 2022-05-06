@@ -11,5 +11,8 @@ router.get('/', async (req, res) => {
         return res.status(500).send('Server error')
     }
 })
+router.post('/', (req, res) => {
+    res.send('Hell yeah! Letter is send')    
+})
 
 module.exports = router;
