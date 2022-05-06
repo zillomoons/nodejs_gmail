@@ -27,6 +27,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', (req, res) => {
     const { name, contacts, subject, message } = req.body.data;
+    console.log('letter from ' + name)
     transporter.sendMail({
         from: `Portfolio`,
         to: end_mail,
