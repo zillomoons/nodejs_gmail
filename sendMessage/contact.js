@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
+require('dotenv').config()
 
-const smtp_login = process.env.SMTP_LOGIN
-const smtp_password = process.env.SMTP_PASSWORD
-const end_mail = process.env.END_MAIL
+const smtp_login = process.env.SMTP_LOGIN 
+const smtp_password = process.env.SMTP_PASSWORD 
+const end_mail = process.env.END_MAIL 
 
-const transporter = nodemailer.createTransport({
+let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: smtp_login,
@@ -27,7 +28,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', (req, res) => {
     const { name, contacts, subject, message } = req.body.data;
-    console.log('letter from ' + name)
+    console.log('letter received')
     transporter.sendMail({
         from: `Portfolio`,
         to: end_mail,
@@ -38,6 +39,7 @@ router.post('/', (req, res) => {
         <div>${message}</div>
         `
     });
+    
     res.send('Hell yeah! Letter is send')    
 })
 
