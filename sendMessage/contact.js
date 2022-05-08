@@ -17,6 +17,7 @@ let transporter = nodemailer.createTransport({
 
 router.get('/', async (req, res) => {
     try {
+        console.log(smtp_login)
         res.json({
             status: 200,
             message: 'Hell hound is on leash'
