@@ -26,10 +26,10 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const { name, contacts, subject, message } = req.body.data;
-    console.log('letter received')
-    transporter.sendMail({
+    try {
+        await transporter.sendMail({
         from: `Portfolio`,
         to: end_mail,
         subject: 'Portfolio-message',
@@ -38,7 +38,11 @@ router.post('/', (req, res) => {
         <div>Contacts: ${contacts}</div>
         <div>${message}</div>
         `
-    });
+        });
+        console.log('letter received')
+    } catch (error) {
+        return res.status(error.statusCode || 500).json({error: error.message})
+    }
     
     res.send('Hell yeah! Letter is send')    
 })
