@@ -33,10 +33,10 @@ router.post('/', async (req, res) => {
         from: `Portfolio`,
         to: end_mail,
         subject: 'Portfolio-message',
-        html: `<b>${subject}</b>
+        html: `<em>Subject</em>: <b>${subject}</b>
         <em>From: ${name}</em>
-        <div>Contacts: ${contacts}</div>
-        <div>${message}</div>
+        <div><em>Contacts:</em> ${contacts}</div>
+        <div><em>Message:</em> ${message}</div>
         `
         });
         console.log('letter received')
