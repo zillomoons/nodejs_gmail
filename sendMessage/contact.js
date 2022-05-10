@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     try {
         res.json({
             status: 200,
-            message: 'Hell hound is on leash'+ smtp_login + smtp_password
+            message: 'Hell hound is on leash '+ smtp_login
         })
     } catch (error) {
         return res.status(500).send('Server error')
