@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
         to: end_mail,
         subject: 'Portfolio-message',
         html: `<em>Subject</em>: <b>${subject}</b>
-        <em>From: ${name}</em>
+        <div><em>From: ${name}</em></div>
         <div><em>Contacts:</em> ${contacts}</div>
         <div><em>Message:</em> ${message}</div>
         `
